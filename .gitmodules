@@ -1,0 +1,3 @@
+[submodule "fcc-ee-lattice"]
+	path = fcc-ee-lattice
+	url = https://gitlab.cern.ch/acc-models/fcc/fcc-ee-lattice.git
