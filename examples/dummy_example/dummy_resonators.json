@@ -1,0 +1,17 @@
+{
+  "name": "resonators_1",
+  "length": 8.6,
+  "modes": [
+    {
+      "Rl": 1,
+      "Ql": 1e3,
+      "fl": 400e6,
+      "Rxd": 1,
+      "Qxd": 1e3,
+      "fxd": 400e6,
+      "Ryd": 1,
+      "Qyd": 1e3,
+      "fyd": 400e6
+    }
+  ]
+}
