@@ -1,7 +1,8 @@
 from fcc_ee_pywit_model.fcc_ee_pywit_model import FCCEEModel
 import os
+import matplotlib.pyplot as plt
 
-example_folder = '/Users/lorenzogiacomel/fcc_ee_pywit_model/examples/dummy_example'
+example_folder = os. getcwd()
 
 collimator_settings_filename = os.path.join(example_folder,
                                             'dummy_collimator_settings.json')
@@ -43,7 +44,7 @@ frequency_parameters_for_taper_rw = {
 
 model = FCCEEModel(
     energy=45.6e9, #80e9, 120e9, 175e9, 182.5e9
-    collimator_settings_filename=collimator_settings_filename,
+    collimator_settings_filename=None, #collimator_settings_filename,
     taper_settings_filename=taper_settings_filename,
     elliptic_elements_settings_filename=elliptic_elements_settings_filename,
     broadband_resonators_list=broadband_resonators_list,
@@ -56,8 +57,26 @@ model = FCCEEModel(
     compute_taper_RW_impedance_collimators=True,
     use_single_layer_approx_for_coated_taper=True,
     frequency_parameters_for_taper_rw=frequency_parameters_for_taper_rw,
-    f_cutoff_broadband=50e9,    #?
+    f_cutoff_broadband=50e12,    #?
     compute_wake=False,     #?
 )
 
-print('a')
+total_model = model.total
+
+disc_xdip = total_model.get_component('x1000').discretize(10**3, 1, 1e-1, 1e13, freq_precision_factor=0.1)[0]
+
+plt.loglog(disc_xdip[0], disc_xdip[1].real, '-', linewidth=2, label='real part')
+plt.loglog(disc_xdip[0], disc_xdip[1].imag, '--', linewidth=2, label='imaginary part')
+plt.xlabel('frequency [Hz]')
+plt.ylabel('x-dipolar impedance [Hz]')
+plt.legend()
+plt.show()
+
+disc_xdip = total_model.get_component('y0100').discretize(10**3, 1, 1e-1, 1e13, freq_precision_factor=0.1)[0]
+
+plt.loglog(disc_xdip[0], disc_xdip[1].real, '-', linewidth=2, label='real part')
+plt.loglog(disc_xdip[0], disc_xdip[1].imag, '--', linewidth=2, label='imaginary part')
+plt.xlabel('frequency [Hz]')
+plt.ylabel('y-dipolar impedance [Hz]')
+plt.legend()
+plt.show()

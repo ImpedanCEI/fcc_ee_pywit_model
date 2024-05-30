@@ -7,7 +7,7 @@ from scipy.interpolate import interp1d
 
 
 def compute_betas_and_lengths(twiss_table,
-                              layout_dict: dict) -> dict[str, dict[str, float]]:
+                              layout_dict: dict) -> dict:
     all_s = twiss_table.s
     _, ind = np.unique(all_s, return_index=True)
     all_s = all_s[ind]

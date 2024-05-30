@@ -34,8 +34,8 @@ class FCCEEModel(Model):
                  z_params_dict: dict = None, additional_f_params: dict = None,
                  jobs_submission_function: Callable = execute_jobs_locally,
                  normalized_emittance_for_coll: float = 3.5,
-                 compute_taper_RW_impedance_collimators: bool = True,
-                 compute_geometric_impedance_collimators: bool = True,
+                 compute_taper_RW_impedance_collimators: bool = False,
+                 compute_geometric_impedance_collimators: bool = False,
                  use_single_layer_approx_for_coated_taper: bool = True,
                  frequency_parameters_for_taper_rw: dict = None,
                  resonator_f_roi_level: float = DEFAULT_RESONATOR_F_ROI_LEVEL,
@@ -63,15 +63,6 @@ class FCCEEModel(Model):
         mad.input(f'beam, particle=POSITRON,energy={energy};'
                   f'use sequence={sequence_name};')
 
-        with open(collimator_settings_filename) as f:
-            coll_settings_dict = json.load(f)
-
-        for coll_name in coll_settings_dict:
-            coll_dict = coll_settings_dict[coll_name]
-            mad.input(f'{coll_name}: marker;'
-                      f'seqedit,sequence={sequence_name};'
-                      f'install, element=cane,at={coll_dict["s"]},from=IP.1;'
-                      'endedit;')
 
         mad.input(f'use sequence={sequence_name};')
         mad.twiss(sequence=sequence_name, file=optics_filename)
@@ -95,7 +86,7 @@ class FCCEEModel(Model):
 
         elements_list = []
 
-        if collimator_settings_filename:
+        if collimator_settings_filename is not None:
             elements_list.append(CollimatorsGroup(
                 settings_filename=collimator_settings_filename,
                 lxplusbatch=lxplusbatch,
@@ -117,7 +108,7 @@ class FCCEEModel(Model):
                 frequency_parameters_for_taper_rw=frequency_parameters_for_taper_rw
             ))
 
-        if elliptic_elements_settings_filename:
+        if elliptic_elements_settings_filename is not None:
             elements_list.append(EllipticElementsGroup(
                 lxplusbatch=lxplusbatch,
                 parameters_filename=elliptic_elements_settings_filename,
@@ -126,15 +117,15 @@ class FCCEEModel(Model):
                 relativistic_gamma=relativistic_gamma,
                 machine=self.machine,
                 compute_wake=compute_wake,
-                yokoya_factors_beam_screen_filename=os.path.join(
-                    data_directory, 'elliptic_elements',
-                    'Yokoya_factors_elliptic.dat'),
+                #yokoya_factors_beam_screen_filename=os.path.join(
+                #    data_directory, 'elliptic_elements',
+                #    'Yokoya_factors_elliptic.dat'),
                 name='beam screen',
                 f_cutoff=f_cutoff_broadband,
                 additional_f_params=additional_f_params,
                 jobs_submission_function=jobs_submission_function))
 
-        if broadband_resonators_list and len(broadband_resonators_list) > 0:
+        if broadband_resonators_list is not None and len(broadband_resonators_list) > 0:
             for broadband_resonators_filename in broadband_resonators_list:
                 with open(broadband_resonators_filename) as tapers_file:
                     broadband_resonators_filename_dict = json.load(tapers_file)
@@ -142,9 +133,9 @@ class FCCEEModel(Model):
                 elements_list.append(BroadbandResonatorsGroup(
                     betas_lengths_dict=self.betas_lengths_dict,
                     parameters_dict=broadband_resonators_filename_dict,
-                    name=broadband_resonators_filename_dict['name']))
+                    name='a broadband resonator'))
 
-        if resonators_list and len(resonators_list) > 0:
+        if resonators_list is not None and len(resonators_list) > 0:
             for resonators_filename in resonators_list:
                 with open(resonators_filename) as tapers_file:
                     resonators_filename_dict = json.load(tapers_file)
@@ -153,3 +144,5 @@ class FCCEEModel(Model):
                     betas_lengths_dict=self.betas_lengths_dict,
                     parameters_dict=resonators_filename_dict,
                     name=resonators_filename_dict['name']))
+
+        super().__init__(elements=elements_list, lumped_betas=(self.beta_x_smooth, self.beta_y_smooth))
