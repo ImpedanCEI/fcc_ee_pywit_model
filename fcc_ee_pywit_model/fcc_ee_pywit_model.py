@@ -1,16 +1,16 @@
 from pywit.model import Model
 
-from lhc_pywit_model.collimators_group import CollimatorsGroup
 from lhc_pywit_model.elliptic_elements_group import EllipticElementsGroup
 from lhc_pywit_model.resonators_group import ResonatorsGroup
 from lhc_pywit_model.broadband_resonators_group import BroadbandResonatorsGroup
 
 from lhc_pywit_model.utils import execute_jobs_locally
 
-from fcc_ee_pywit_model.package_paths import data_directory, optics_directory
+from fcc_ee_pywit_model.package_paths import optics_directory
 from fcc_ee_pywit_model.parameters import DEFAULT_RESONATOR_F_ROI_LEVEL
 from fcc_ee_pywit_model.utils import compute_betas_and_lengths
 from fcc_ee_pywit_model.data.machine_layouts.fcc_ee_layout_b1 import layout_dict
+from fcc_ee_pywit_model.collimators_group import CollimatorsGroup
 
 from typing import List, Union, Callable
 from pathlib import Path
@@ -23,7 +23,7 @@ import numpy as np
 
 class FCCEEModel(Model):
     def __init__(self,
-                 energy, #45.6e9, 80e9, 120e9, 175e9, 182.5e9
+                 energy,  #45.6e9, 80e9, 120e9, 175e9, 182.5e9
                  collimator_settings_filename: Union[str, Path] = None,
                  taper_settings_filename: Union[str, Path] = None,
                  elliptic_elements_settings_filename: Union[str, Path] = None,
@@ -33,7 +33,8 @@ class FCCEEModel(Model):
                  f_params_dict: dict = None,
                  z_params_dict: dict = None, additional_f_params: dict = None,
                  jobs_submission_function: Callable = execute_jobs_locally,
-                 normalized_emittance_for_coll: float = 3.5,
+                 rms_emittance_x_for_coll: float = None,
+                 rms_emittance_y_for_coll: float = None,
                  compute_taper_RW_impedance_collimators: bool = False,
                  compute_geometric_impedance_collimators: bool = False,
                  use_single_layer_approx_for_coated_taper: bool = True,
@@ -49,7 +50,8 @@ class FCCEEModel(Model):
 
         e0 = physical_constants['electron mass energy equivalent in MeV'][0]*1e6
 
-        relativistic_gamma = energy/e0
+        self.relativistic_gamma = energy/e0
+        self.relativistic_beta = np.sqrt(1-1/self.relativistic_gamma**2)
 
         mad = Madx()
 
@@ -62,7 +64,6 @@ class FCCEEModel(Model):
 
         mad.input(f'beam, particle=POSITRON,energy={energy};'
                   f'use sequence={sequence_name};')
-
 
         mad.input(f'use sequence={sequence_name};')
         mad.twiss(sequence=sequence_name, file=optics_filename)
@@ -87,11 +88,15 @@ class FCCEEModel(Model):
         elements_list = []
 
         if collimator_settings_filename is not None:
+            normalized_emittance_x_for_coll = self.relativistic_gamma * self.relativistic_beta * rms_emittance_x_for_coll
+            normalized_emittance_y_for_coll = self.relativistic_gamma * self.relativistic_beta * rms_emittance_y_for_coll
+
             elements_list.append(CollimatorsGroup(
                 settings_filename=collimator_settings_filename,
                 lxplusbatch=lxplusbatch,
-                relativistic_gamma=relativistic_gamma,
-                normalized_emittance=normalized_emittance_for_coll,
+                relativistic_gamma=self.relativistic_gamma,
+                normalized_emittance_x=normalized_emittance_x_for_coll,
+                normalized_emittance_y=normalized_emittance_y_for_coll,
                 compute_wake=compute_wake,
                 f_params_dict=f_params_dict,
                 z_params_dict=z_params_dict,
@@ -114,7 +119,7 @@ class FCCEEModel(Model):
                 parameters_filename=elliptic_elements_settings_filename,
                 betas_lengths_dict=self.betas_lengths_dict,
                 f_params_dict=f_params_dict, z_params_dict=z_params_dict,
-                relativistic_gamma=relativistic_gamma,
+                relativistic_gamma=self.relativistic_gamma,
                 machine=self.machine,
                 compute_wake=compute_wake,
                 #yokoya_factors_beam_screen_filename=os.path.join(

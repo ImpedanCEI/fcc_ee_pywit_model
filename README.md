@@ -16,7 +16,7 @@ the collimators cannot be included until the collimation optics are available.**
 
 - A simple example showing how the code works is available
 
+- The collimators group has been specialized to give the possibility to have different emittances in x/y
+
 ## TODO (updated 29.05.2024):
 - Add collimation optics
-- Normalized emittances for collimation: determine the normalized emittance. In FCC it is different in x and y so 
-probably some development is needed.
