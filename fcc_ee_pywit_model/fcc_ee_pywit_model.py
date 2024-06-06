@@ -57,6 +57,7 @@ class FCCEEModel(Model):
 
         sequence_name = 'fccee_p_ring'
 
+        ''''
         if energy <= 80:
             mad.call(os.path.join(optics_directory, 'lattices/z/fccee_z.seq'))
         else:
@@ -64,8 +65,11 @@ class FCCEEModel(Model):
 
         mad.input(f'beam, particle=POSITRON,energy={energy};'
                   f'use sequence={sequence_name};')
+        '''
 
-        mad.input(f'use sequence={sequence_name};')
+        sequence_name = 'ring'
+        mad.call('./fccee_collimation_lattice_forimpedance/FCCee_z_V23_tridodo572_colloptics_thin.seq')
+        mad.input(f'beam, particle=POSITRON,energy={energy};use sequence={sequence_name};')
         mad.twiss(sequence=sequence_name, file=optics_filename)
 
         self.twiss = mad.table.twiss
