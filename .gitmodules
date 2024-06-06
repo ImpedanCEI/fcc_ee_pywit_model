@@ -1,3 +1,6 @@
 [submodule "fcc-ee-lattice"]
 	path = fcc-ee-lattice
 	url = https://gitlab.cern.ch/acc-models/fcc/fcc-ee-lattice.git
+[submodule "fccee_collimation_lattice_forimpedance"]
+	path = fccee_collimation_lattice_forimpedance
+	url = https://gitlab.cern.ch/gbroggi/fccee_collimation_lattice_forimpedance.git
