@@ -6,7 +6,7 @@ from lhc_pywit_model.broadband_resonators_group import BroadbandResonatorsGroup
 
 from lhc_pywit_model.utils import execute_jobs_locally
 
-from fcc_ee_pywit_model.package_paths import optics_directory
+from fcc_ee_pywit_model.package_paths import base_dir
 from fcc_ee_pywit_model.parameters import DEFAULT_RESONATOR_F_ROI_LEVEL
 from fcc_ee_pywit_model.utils import compute_betas_and_lengths
 from fcc_ee_pywit_model.data.machine_layouts.fcc_ee_layout_b1 import layout_dict
@@ -68,7 +68,7 @@ class FCCEEModel(Model):
         '''
 
         sequence_name = 'ring'
-        mad.call('./fccee_collimation_lattice_forimpedance/FCCee_z_V23_tridodo572_colloptics_thin.seq')
+        mad.call(os.path.join(base_dir, './fccee_collimation_lattice_forimpedance/FCCee_z_V23_tridodo572_colloptics_thin.seq'))
         mad.input(f'beam, particle=POSITRON,energy={energy};use sequence={sequence_name};')
         mad.twiss(sequence=sequence_name, file=optics_filename)
 

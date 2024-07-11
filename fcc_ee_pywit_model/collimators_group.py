@@ -38,7 +38,7 @@ class CollimatorsGroup(LHCCollimatorsGroup):
                          frequency_parameters_for_taper_rw=frequency_parameters_for_taper_rw)
 
     def compute_one_sigma_halfgap(self, beta_x, beta_y, angle):
-        if self.normalized_emittance_x is None or self.normalized_emittance_y:
+        if self.normalized_emittance_x is None or self.normalized_emittance_y is None:
             raise ValueError('The normalized emittances must be specified in order to compute the one sigma half-gap')
 
         if self.relativistic_gamma is None:
