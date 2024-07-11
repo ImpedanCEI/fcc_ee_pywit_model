@@ -1,0 +1,21 @@
+{
+  "pipe_section_1": {
+    "small_axis": 0.022,
+    "large_axis": 0.022,
+    "orientation": "v",
+    "layers": [
+      {
+        "material": "neg",
+        "thickness": 0.0000015
+      },
+      {
+        "material": "Cu",
+        "thickness": 0.002
+      },
+      {
+        "material": "vacuum",
+        "thickness": "inf"
+      }
+    ]
+  }
+}
