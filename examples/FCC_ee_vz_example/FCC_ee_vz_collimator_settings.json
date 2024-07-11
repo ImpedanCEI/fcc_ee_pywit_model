@@ -21,8 +21,8 @@
     "angle": 90.0,
     "layers": [
       {
-        "material": "Mo",
-        "thickness": Infinity
+        "material": "moc",
+        "thickness": 0.025
       }
     ],
     "n_sigma": 65, 
@@ -106,7 +106,7 @@
     "angle": 0.0, 
     "layers": [
       {
-        "material": "Mo",
+        "material": "moc",
         "thickness": 0.025
       }
     ],

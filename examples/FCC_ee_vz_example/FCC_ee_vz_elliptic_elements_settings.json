@@ -6,7 +6,7 @@
     "layers": [
       {
         "material": "neg",
-        "thickness": 0.0000015
+        "thickness": 0.000002
       },
       {
         "material": "Cu",
