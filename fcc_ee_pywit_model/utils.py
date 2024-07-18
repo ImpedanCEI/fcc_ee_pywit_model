@@ -1,6 +1,9 @@
-from typing import Union
+from typing import Union, Dict
 from pathlib import Path
 import pyoptics as opt
+from pywit.interface import component_names
+import json
+
 
 import numpy as np
 from scipy.interpolate import interp1d
@@ -51,3 +54,41 @@ def compute_betas_and_lengths(twiss_table,
         }
 
     return dict_betas_lengths
+
+
+def create_impedance_wake_json_from_cst(
+        filenames_dict: Dict[str, Path],
+        output_filename: Path,
+        skiprows: int = 3,
+):
+    # create an empty dictionary
+    out_dict = {}
+
+    # open each file, read the data and store it in the dictionary
+    for component_name, filename in filenames_dict.items():
+
+        # if the component name is not a valid one, raise an error
+        if component_name not in component_names:
+            raise ValueError(f"Component name {component_name} not in {component_names.keys()}")
+
+        is_impedance, _, _ = component_names[component_name]
+
+        # read the data and store it in the dictionary
+        data = np.loadtxt(filename, skiprows=skiprows)
+        out_dict[component_name] = data.tolist()  # to list because json doesn't like np.arrays
+
+        if is_impedance:
+            out_dict[component_name] = {
+                "frequency": data[:, 0].tolist(),
+                "real impedance": data[:, 1].tolist(),
+                "imaginary impedance": data[:, 2].tolist(),
+            }
+        else:
+            out_dict[component_name] = {
+                "distance": data[:, 0].tolist(),
+                "wake": data[:, 1].tolist(),
+            }
+
+    # save the dictionary in a json file
+    with open(output_filename, "w") as f:
+        json.dump(out_dict, f, indent=2)

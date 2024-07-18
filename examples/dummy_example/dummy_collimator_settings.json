@@ -1,6 +1,5 @@
 {
   "a_collimator": {
-    "s": 1,
     "angle": 0.0,
     "layers": [
       {
@@ -16,7 +15,6 @@
     "halfgap_dependent_hom_files": []
   },
   "another_collimator": {
-    "s": 2,
     "angle": 0.0,
     "layers": [
       {
