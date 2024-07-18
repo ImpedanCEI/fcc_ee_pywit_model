@@ -3,8 +3,11 @@ from pywit.model import Model
 from lhc_pywit_model.elliptic_elements_group import EllipticElementsGroup
 from lhc_pywit_model.resonators_group import ResonatorsGroup
 from lhc_pywit_model.broadband_resonators_group import BroadbandResonatorsGroup
-
 from lhc_pywit_model.utils import execute_jobs_locally
+
+from pywit.component import Component
+from pywit.interface import component_names
+from pywit.element import Element
 
 from fcc_ee_pywit_model.package_paths import base_dir
 from fcc_ee_pywit_model.parameters import DEFAULT_RESONATOR_F_ROI_LEVEL
@@ -12,12 +15,13 @@ from fcc_ee_pywit_model.utils import compute_betas_and_lengths
 from fcc_ee_pywit_model.data.machine_layouts.fcc_ee_layout_b1 import layout_dict
 from fcc_ee_pywit_model.collimators_group import CollimatorsGroup
 
-from typing import List, Union, Callable
+from typing import List, Union, Callable, Dict
 from pathlib import Path
 import os
 import json
 from cpymad.madx import Madx
-from scipy.constants import physical_constants
+from scipy.constants import physical_constants, c as c_light
+from scipy.interpolate import interp1d
 import numpy as np
 
 
@@ -29,6 +33,7 @@ class FCCEEModel(Model):
                  elliptic_elements_settings_filename: Union[str, Path] = None,
                  broadband_resonators_list: List[Union[str, Path]] = None,
                  resonators_list: List[Union[str, Path]] = None,
+                 table_filenames_dict: Dict[str, Path] = None,
                  lxplusbatch: str = None,
                  f_params_dict: dict = None,
                  z_params_dict: dict = None, additional_f_params: dict = None,
@@ -42,7 +47,8 @@ class FCCEEModel(Model):
                  resonator_f_roi_level: float = DEFAULT_RESONATOR_F_ROI_LEVEL,
                  f_cutoff_broadband: float = 50e9,
                  compute_wake: bool = False,
-                 optics_filename: Union[str, Path] = 'twiss_fccee_b1.tfs'
+                 optics_filename: Union[str, Path] = 'twiss_fccee_b1.tfs',
+                 markers_dict: Dict[str, float] = None
                  ):
 
         self.machine = 'FCCee'
@@ -69,6 +75,14 @@ class FCCEEModel(Model):
 
         sequence_name = 'ring'
         mad.call(os.path.join(base_dir, './fccee_collimation_lattice_forimpedance/FCCee_z_V23_tridodo572_colloptics_thin.seq'))
+        if markers_dict is not None:
+            for marker_name, s in markers_dict.items():
+                mad.input(f'M: marker;')
+                mad.input(f'{marker_name}: M;')
+                mad.input(f'seqedit, sequence={sequence_name};')
+                mad.input(f'install, element={marker_name}, at={s};')
+                mad.input(f'endedit;')
+
         mad.input(f'beam, particle=POSITRON,energy={energy};use sequence={sequence_name};')
         mad.twiss(sequence=sequence_name, file=optics_filename)
 
@@ -153,5 +167,65 @@ class FCCEEModel(Model):
                     betas_lengths_dict=self.betas_lengths_dict,
                     parameters_dict=resonators_filename_dict,
                     name=resonators_filename_dict['name']))
+
+        if table_filenames_dict is not None:
+            # for each element, load the table and create the components
+            for element_name, table_filename in table_filenames_dict.items():
+                # load the table
+                with open(table_filename) as table_file:
+                    table_dict = json.load(table_file)
+
+                # extract the frequencies for the impedance and the distances for the wake
+
+                components_list = []
+
+                # for each component, create the component object
+                for component_name, component_dict in table_dict.items():
+                    if component_name == 'frequency' or component_name == 'distance':
+                        continue
+
+                    # get the component properties from the component name
+                    is_impedance, plane, exponents = component_names[component_name]
+
+                    source_expoents = exponents[:2]
+                    test_exponents = exponents[2:]
+
+                    # create the impedance or wake functions
+                    if is_impedance:
+                        frequencies = np.array(component_dict['frequency'])
+                        real_impedance = np.array(component_dict['real impedance'])
+                        imaginary_impedance = np.array(component_dict['imaginary impedance'])
+                        component_array = real_impedance + 1j*imaginary_impedance
+                        impedance_func = interp1d(frequencies, component_array, bounds_error=False, fill_value=0)
+                        wake_func = None
+                    else:
+                        distances = np.array(component_dict['distance'])
+                        component_array = np.array(component_dict['wake'])
+                        times = distances/(self.relativistic_beta*c_light)
+
+                        wake_func = interp1d(times, component_array, bounds_error=False, fill_value=0)
+                        impedance_func = None
+
+                    # create the component object
+                    components_list.append(Component(impedance=impedance_func, wake=wake_func, plane=plane,
+                                                        source_exponents=source_expoents, test_exponents=test_exponents,
+                                                        name=component_name))
+
+                # get the beta functions at the element
+                element_mask = self.twiss.name == element_name
+                beta_x = self.twiss.betx[element_mask][0]
+                beta_y = self.twiss.bety[element_mask][0]
+
+                # use almost zero length for the element since it is alrady taken into account in CST
+                length = 1e-12
+
+                # create the element object and append it to the elements list
+                elements_list.append(Element(
+                    components=components_list,
+                    beta_x=beta_x,
+                    beta_y=beta_y,
+                    length=length,
+                    name=element_name
+                ))
 
         super().__init__(elements=elements_list, lumped_betas=(self.beta_x_smooth, self.beta_y_smooth))
