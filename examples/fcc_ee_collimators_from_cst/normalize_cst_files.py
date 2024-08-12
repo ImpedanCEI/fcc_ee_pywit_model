@@ -10,7 +10,7 @@ for filename in os.listdir(import_folder):
     table = np.loadtxt(f'{import_folder}/{filename}', skiprows=3)
     if filename.startswith("Impedance"):
         table[:, 0] *= 1e9
-        table[:, 1:3] *= 1e3
+        table[:, 1:3] *= -1e3
         if "dipX" in filename:
             component = "zxdip"
         elif "dipY" in filename:
