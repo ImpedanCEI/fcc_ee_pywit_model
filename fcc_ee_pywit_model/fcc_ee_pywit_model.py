@@ -8,6 +8,7 @@ from lhc_pywit_model.utils import execute_jobs_locally
 from pywit.component import Component
 from pywit.interface import component_names
 from pywit.element import Element
+from pywit.elements_group import ElementsGroup
 
 from fcc_ee_pywit_model.package_paths import base_dir
 from fcc_ee_pywit_model.parameters import DEFAULT_RESONATOR_F_ROI_LEVEL
@@ -143,7 +144,7 @@ class FCCEEModel(Model):
                 #yokoya_factors_beam_screen_filename=os.path.join(
                 #    data_directory, 'elliptic_elements',
                 #    'Yokoya_factors_elliptic.dat'),
-                name='beam screen',
+                name='beam pipe',
                 f_cutoff=f_cutoff_broadband,
                 additional_f_params=additional_f_params,
                 jobs_submission_function=jobs_submission_function))
@@ -169,63 +170,69 @@ class FCCEEModel(Model):
                     name=resonators_filename_dict['name']))
 
         if table_filenames_dict is not None:
-            # for each element, load the table and create the components
-            for element_name, table_filename in table_filenames_dict.items():
-                # load the table
-                with open(table_filename) as table_file:
-                    table_dict = json.load(table_file)
+            group_element_list = []
+            for group_name, group_dict in table_filenames_dict.items():
+                # for each element, load the table and create the components
+                for element_name, table_filename in group_dict.items():
+                    # load the table
+                    with open(table_filename) as table_file:
+                        table_dict = json.load(table_file)
 
-                # extract the frequencies for the impedance and the distances for the wake
+                    # extract the frequencies for the impedance and the distances for the wake
 
-                components_list = []
+                    components_list = []
 
-                # for each component, create the component object
-                for component_name, component_dict in table_dict.items():
-                    if component_name == 'frequency' or component_name == 'distance':
-                        continue
+                    # for each component, create the component object
+                    for component_name, component_dict in table_dict.items():
+                        if component_name == 'frequency' or component_name == 'distance':
+                            continue
 
-                    # get the component properties from the component name
-                    is_impedance, plane, exponents = component_names[component_name]
+                        # get the component properties from the component name
+                        is_impedance, plane, exponents = component_names[component_name]
 
-                    source_expoents = exponents[:2]
-                    test_exponents = exponents[2:]
+                        source_expoents = exponents[:2]
+                        test_exponents = exponents[2:]
 
-                    # create the impedance or wake functions
-                    if is_impedance:
-                        frequencies = np.array(component_dict['frequency'])
-                        real_impedance = np.array(component_dict['real impedance'])
-                        imaginary_impedance = np.array(component_dict['imaginary impedance'])
-                        component_array = real_impedance + 1j*imaginary_impedance
-                        impedance_func = interp1d(frequencies, component_array, bounds_error=False, fill_value=0)
-                        wake_func = None
-                    else:
-                        distances = np.array(component_dict['distance'])
-                        component_array = np.array(component_dict['wake'])
-                        times = distances/(self.relativistic_beta*c_light)
+                        # create the impedance or wake functions
+                        if is_impedance:
+                            frequencies = np.array(component_dict['frequency'])
+                            real_impedance = np.array(component_dict['real impedance'])
+                            imaginary_impedance = np.array(component_dict['imaginary impedance'])
+                            component_array = real_impedance + 1j*imaginary_impedance
+                            impedance_func = interp1d(frequencies, component_array, bounds_error=False, fill_value=0)
+                            wake_func = None
+                        else:
+                            distances = np.array(component_dict['distance'])
+                            component_array = np.array(component_dict['wake'])
+                            times = distances/(self.relativistic_beta*c_light)
 
-                        wake_func = interp1d(times, component_array, bounds_error=False, fill_value=0)
-                        impedance_func = None
+                            wake_func = interp1d(times, component_array, bounds_error=False, fill_value=0)
+                            impedance_func = None
 
-                    # create the component object
-                    components_list.append(Component(impedance=impedance_func, wake=wake_func, plane=plane,
-                                                        source_exponents=source_expoents, test_exponents=test_exponents,
-                                                        name=component_name))
+                        # create the component object
+                        components_list.append(Component(impedance=impedance_func, wake=wake_func, plane=plane,
+                                                            source_exponents=source_expoents, test_exponents=test_exponents,
+                                                            name=component_name))
 
-                # get the beta functions at the element
-                element_mask = self.twiss.name == element_name
-                beta_x = self.twiss.betx[element_mask][0]
-                beta_y = self.twiss.bety[element_mask][0]
+                    # get the beta functions at the element
+                    element_mask = self.twiss.name == element_name
+                    beta_x = self.twiss.betx[element_mask][0]
+                    beta_y = self.twiss.bety[element_mask][0]
 
-                # use almost zero length for the element since it is alrady taken into account in CST
-                length = 1e-12
+                    # use almost zero length for the element since it is alrady taken into account in CST
+                    length = 1e-12
 
-                # create the element object and append it to the elements list
-                elements_list.append(Element(
-                    components=components_list,
-                    beta_x=beta_x,
-                    beta_y=beta_y,
-                    length=length,
-                    name=element_name
-                ))
+                    # create the element object and append it to the elements list
+                    group_element_list.append(Element(
+                        components=components_list,
+                        beta_x=beta_x,
+                        beta_y=beta_y,
+                        length=length,
+                        name=element_name
+                    ))
+                
+                elements_list.append(ElementsGroup(elements_list=group_element_list, name=group_name))
+
+        os.remove(self.optics_filename)
 
         super().__init__(elements=elements_list, lumped_betas=(self.beta_x_smooth, self.beta_y_smooth))
