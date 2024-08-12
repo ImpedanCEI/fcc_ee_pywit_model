@@ -40,23 +40,28 @@ frequency_parameters_for_taper_rw = {
 }
 
 collimators_table_dict = {}
-collimators_list = os.listdir("collimator_schematic_normalized")
+folder = "collimator_schematic_normalized"
+collimators_list = os.listdir(folder)
 for filename in collimators_list:
     collimator_name = filename.split("_")[2]
     if not collimator_name.startswith("tcr"):
-        collimators_table_dict[f"{collimator_name}:1"] = f"collimator_schematic_normalized/{filename}"
+        collimators_table_dict[f"{collimator_name}:1"] = f"{folder}/{filename}"
 
     elif collimator_name.startswith("tcr"):
-        collimators_table_dict[f"{collimator_name}:1"] = f"collimator_schematic_normalized/{filename}"
+        collimators_table_dict[f"{collimator_name}:1"] = f"{folder}/{filename}"
         if "c0" in collimator_name:
-            collimators_table_dict[collimator_name.replace("c0", "c2")+":1"] = f"collimator_schematic_normalized/{filename}"
+            collimators_table_dict[collimator_name.replace("c0", "c2")+":1"] = f"{folder}/{filename}"
 
 collimators_name = list(collimators_table_dict.keys())
 
 for collimator_name in collimators_name:
     if collimator_name.startswith("tcr"):
         for ip in ["1", "3", "4"]:
-            collimators_table_dict[collimator_name.replace(".2.", f".{ip}.")] = f"collimator_schematic_normalized/{filename}"
+            collimators_table_dict[collimator_name.replace(".2.", f".{ip}.")] = f"{folder}/{filename}"
+
+table_filenames_dict = {'collimators': collimators_table_dict,
+               #'bellows': blabla
+               }
 
 
 model = FCCEEModel(
@@ -64,7 +69,7 @@ model = FCCEEModel(
     elliptic_elements_settings_filename=elliptic_elements_settings_filename,
     # broadband_resonators_list=broadband_resonators_list,
     # resonators_list=resonators_list,
-    table_filenames_dict=collimators_table_dict,
+    table_filenames_dict=table_filenames_dict,
     f_params_dict=f_params_dict,
     z_params_dict=z_params_dict,
     additional_f_params=additional_f_params,
@@ -78,12 +83,12 @@ model = FCCEEModel(
     compute_wake=False,     #?
 )
 
-total_model = sum(model.elements[1:34])
+total_model = model.total
 
 disc_xdip = total_model.get_component('x1000').discretize(10**3, 1, 1e-1, 1e13, freq_precision_factor=0.1)[0]
 
-plt.loglog(disc_xdip[0], -(disc_xdip[1].real), '-', linewidth=2, label='real part')
-plt.loglog(disc_xdip[0], -(disc_xdip[1].imag), '--', linewidth=2, label='imaginary part')
+plt.loglog(disc_xdip[0], (disc_xdip[1].real), '-', linewidth=2, label='real part')
+plt.loglog(disc_xdip[0], (disc_xdip[1].imag), '--', linewidth=2, label='imaginary part')
 plt.xlabel('frequency [Hz]')
 plt.ylabel(r'x-dipolar impedance [$\Omega$/m]')
 plt.legend()
@@ -91,8 +96,8 @@ plt.show()
 
 disc_xdip = total_model.get_component('y0100').discretize(10**3, 1, 1e-1, 1e13, freq_precision_factor=0.1)[0]
 
-plt.loglog(disc_xdip[0], -(disc_xdip[1].real), '-', linewidth=2, label='real part')
-plt.loglog(disc_xdip[0], -(disc_xdip[1].imag), '--', linewidth=2, label='imaginary part')
+plt.loglog(disc_xdip[0], (disc_xdip[1].real), '-', linewidth=2, label='real part')
+plt.loglog(disc_xdip[0], (disc_xdip[1].imag), '--', linewidth=2, label='imaginary part')
 plt.xlabel('frequency [Hz]')
 plt.ylabel(r'y-dipolar impedance [$\Omega/m$]')
 plt.legend()
