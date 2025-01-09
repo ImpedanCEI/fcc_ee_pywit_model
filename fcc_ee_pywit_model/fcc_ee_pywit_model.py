@@ -49,7 +49,8 @@ class FCCEEModel(Model):
                  f_cutoff_broadband: float = 50e9,
                  compute_wake: bool = False,
                  optics_filename: Union[str, Path] = 'twiss_fccee_b1.tfs',
-                 markers_dict: Dict[str, float] = None
+                 markers_dict: Dict[str, float] = None,
+                 beta_smooth_elements: List[str] = None
                  ):
 
         self.machine = 'FCCee'
@@ -92,7 +93,7 @@ class FCCEEModel(Model):
         self.circ = self.twiss.summary.length
         radius = self.circ / (2 * np.pi)
         self.q_x = self.twiss.summary.q1
-        self.q_y = self.twiss.summary.q1
+        self.q_y = self.twiss.summary.q2
 
         self.beta_x_smooth = radius / self.q_x
         self.beta_y_smooth = radius / self.q_y
@@ -100,6 +101,9 @@ class FCCEEModel(Model):
         self.betas_lengths_dict = compute_betas_and_lengths(
             twiss_table=self.twiss,
             layout_dict=layout_dict,
+            beta_smooth_elements=beta_smooth_elements,
+            beta_x_smooth=self.beta_x_smooth,
+            beta_y_smooth=self.beta_y_smooth
         )
 
         self.resonator_f_roi_level = resonator_f_roi_level

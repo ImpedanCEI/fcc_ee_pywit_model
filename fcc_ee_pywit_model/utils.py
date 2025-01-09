@@ -10,7 +10,17 @@ from scipy.interpolate import interp1d
 
 
 def compute_betas_and_lengths(twiss_table,
-                              layout_dict: dict) -> dict:
+                              layout_dict: dict,
+                              beta_smooth_elements=None, 
+                              beta_x_smooth=None,
+                              beta_y_smooth=None) -> dict:
+    
+    if beta_smooth_elements is None:
+        beta_smooth_elements = []
+    else:
+        if beta_x_smooth is None or beta_y_smooth is None:
+            raise ValueError("if beta_smooth_elements is specified the smooth beta has to be specified too")
+
     all_s = twiss_table.s
     _, ind = np.unique(all_s, return_index=True)
     all_s = all_s[ind]
@@ -23,35 +33,53 @@ def compute_betas_and_lengths(twiss_table,
     dict_betas_lengths = {}
 
     for name in layout_dict['betas_lengths_names']:
+        
+        if name not in beta_smooth_elements:
+            length = 0
+            betax = 0
+            betay = 0
 
-        length = 0
-        betax = 0
-        betay = 0
+            for the_beg, the_end_ in zip(layout_dict['sbeg'][name],
+                                        layout_dict['send'][name]):
+                if the_end_ > twiss_table.summary.length:
+                    the_end = twiss_table.summary.length
+                else:
+                    the_end = the_end_
 
-        for the_beg, the_end_ in zip(layout_dict['sbeg'][name],
-                                     layout_dict['send'][name]):
-            if the_end_ > twiss_table.summary.length:
-                the_end = twiss_table.summary.length
-            else:
-                the_end = the_end_
+                length += the_end - the_beg
+                the_s = np.arange(the_beg, the_end_, 0.01)
+                if the_end not in the_s:
+                    the_s = np.hstack((the_s, [the_end]))
+                # average beta (through trapz integration)
+                betax += np.trapz(fx(the_s), x=the_s)
+                betay += np.trapz(fy(the_s), x=the_s)
 
-            length += the_end - the_beg
-            the_s = np.arange(the_beg, the_end_, 0.01)
-            if the_end not in the_s:
-                the_s = np.hstack((the_s, [the_end]))
-            # average beta (through trapz integration)
-            betax += np.trapz(fx(the_s), x=the_s)
-            betay += np.trapz(fy(the_s), x=the_s)
+            if length != 0:
+                betax /= length
+                betay /= length
 
-        if length != 0:
-            betax /= length
-            betay /= length
+            dict_betas_lengths[name] = {
+                'beta_x': betax,
+                'beta_y': betay,
+                'length': length
+            }
+        else:
+            length = 0
 
-        dict_betas_lengths[name] = {
-            'beta_x': betax,
-            'beta_y': betay,
-            'length': length
-        }
+            for the_beg, the_end_ in zip(layout_dict['sbeg'][name],
+                                        layout_dict['send'][name]):
+                if the_end_ > twiss_table.summary.length:
+                    the_end = twiss_table.summary.length
+                else:
+                    the_end = the_end_
+
+                length += the_end - the_beg
+
+                dict_betas_lengths[name] = {
+                    'beta_x': beta_x_smooth,
+                    'beta_y': beta_y_smooth,
+                    'length': length
+                }
 
     return dict_betas_lengths
 
