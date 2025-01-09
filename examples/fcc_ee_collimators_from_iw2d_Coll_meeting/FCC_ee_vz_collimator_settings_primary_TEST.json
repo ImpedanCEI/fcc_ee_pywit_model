@@ -1,0 +1,19 @@
+{
+  "tcp.v.b1": {
+    "s": 33103.0,
+    "angle": 90.0,
+    "layers": [
+      {
+        "material": "my_test",
+        "thickness": Infinity
+      }
+    ],
+    "halfgap": 0.0024, 
+    "length": 0.25, 
+    "taper_type": "tcl",
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  }
+
+}
