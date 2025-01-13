@@ -6,7 +6,7 @@ import numpy as np
 example_folder = os. getcwd()
 
 collimator_settings_filename = os.path.join(example_folder,
-                                            'FCC_ee_vz_collimator_settings.json')
+                                            'FCC_ee_vz_collimator_settings_primary_Gr.json')
 taper_settings_filename = os.path.join(example_folder,
                                        'FCC_ee_vz_taper_settings.json')
 
