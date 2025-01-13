@@ -33,7 +33,7 @@ def compute_betas_and_lengths(twiss_table,
     dict_betas_lengths = {}
 
     for name in layout_dict['betas_lengths_names']:
-        
+
         if name not in beta_smooth_elements:
             length = 0
             betax = 0

@@ -111,15 +111,15 @@ class FCCEEModel(Model):
         elements_list = []
 
         if collimator_settings_filename is not None:
-            normalized_emittance_x_for_coll = self.relativistic_gamma * self.relativistic_beta * rms_emittance_x_for_coll
-            normalized_emittance_y_for_coll = self.relativistic_gamma * self.relativistic_beta * rms_emittance_y_for_coll
+            self.normalized_emittance_x_for_coll = self.relativistic_gamma * self.relativistic_beta * rms_emittance_x_for_coll
+            self.normalized_emittance_y_for_coll = self.relativistic_gamma * self.relativistic_beta * rms_emittance_y_for_coll
 
             elements_list.append(CollimatorsGroup(
                 settings_filename=collimator_settings_filename,
                 lxplusbatch=lxplusbatch,
                 relativistic_gamma=self.relativistic_gamma,
-                normalized_emittance_x=normalized_emittance_x_for_coll,
-                normalized_emittance_y=normalized_emittance_y_for_coll,
+                normalized_emittance_x=self.normalized_emittance_x_for_coll,
+                normalized_emittance_y=self.normalized_emittance_y_for_coll,
                 compute_wake=compute_wake,
                 f_params_dict=f_params_dict,
                 z_params_dict=z_params_dict,
