@@ -3,20 +3,23 @@
 This repository contains the impedance model of the FCC-ee collider.
 The intent of this package is to provide the infrastructure needed to develop the model.
 
-## Status (updated 29.05.2024)
+## Status (updated 23.02.2025)
 
-- Added basic elements: 
-  - Collimators: RW (IW2D) + geom (flat taper ) + RW of the tapers (very approximated model)
-  - Elliptic elements (pipes): IW2D
+- Added elements:
+  - Collimators: Geometrical (CST) and RW (IW2D) contributions are considered. Approximation using a linear taper.
+  - Elliptic elements (pipes): IW2D + numerical form factor for both driving and detuning impedance, considering the realistic shape of the vacuum chamber.
   - Resonators
   - Broadband resonators
 
-- The optics are taken from `acc-models/fcc/fcc-ee-lattice` but they do not include the collimation optics yet. **Hence 
-the collimators cannot be included until the collimation optics are available.**
+- Version 2023 of the collimation optics is considered.
 
-- A simple example showing how the code works is available
+- Various examples demonstrating how the code works are available,
 
-- The collimators group has been specialized to give the possibility to have different emittances in x/y
+- The collimators group has been specialized to give the possibility to have different emittances in x/y.
 
-## TODO (updated 29.05.2024):
-- Add collimation optics
+## TODO (updated 23.02.2025):
+- Taper geometry and material optimization of collimators.
+
+
+
+
