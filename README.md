@@ -1,6 +1,7 @@
 # FCC-ee Impedance model
 
 This repository contains the impedance model of the FCC-ee collider.
+
 The intent of this package is to provide the infrastructure needed to develop the model.
 
 ## Status (updated 23.02.2025)
