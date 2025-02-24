@@ -4,7 +4,7 @@ This repository contains the impedance model of the FCC-ee collider.
 
 The intent of this package is to provide the infrastructure needed to develop the model.
 
-## Status (updated 23.02.2025)
+## Status (updated 24.02.2025)
 
 - Added elements:
   - Collimators: Geometrical (CST) and RW (IW2D) contributions are considered.
@@ -21,7 +21,7 @@ The intent of this package is to provide the infrastructure needed to develop th
 - The collimators group has been specialized to give the possibility to have different
  emittances in x/y.
 
-## TODO (updated 23.02.2025):
+## TODO (updated 24.02.2025):
 - Taper geometry and material optimization of collimators.
 
 
