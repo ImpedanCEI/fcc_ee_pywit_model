@@ -1,4 +1,4 @@
-# FCC-ee Impedance model
+# FCC-ee Impedance model for the collimation system
 
 This repository contains the impedance model of the FCC-ee collider.
 
