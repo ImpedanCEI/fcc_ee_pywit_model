@@ -56,7 +56,7 @@ for line in lines[1:]:  # Skip header
         "tilt_1": 0.0,
         "tilt_2": 0.0,
         "halfgap_dependent_hom_files": [],
-        "halfgap": halfgap  
+        "halfgap": halfgap*1e-3  
     }
 
 # === Save the JSON file ===
