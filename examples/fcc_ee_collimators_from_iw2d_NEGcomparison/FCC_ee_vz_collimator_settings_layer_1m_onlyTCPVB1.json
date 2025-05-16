@@ -1,0 +1,17 @@
+{
+  "tcp.v.b1": {
+    "s": 33103.0,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 65, 
+    "length": 0.25, 
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  }
+}
