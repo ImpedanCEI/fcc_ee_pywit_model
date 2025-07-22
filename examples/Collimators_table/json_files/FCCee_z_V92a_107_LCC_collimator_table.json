@@ -1,0 +1,557 @@
+{
+  "tct.h.1.b1": {
+    "s": 22062.0,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 14.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tct.v.1.b1": {
+    "s": 22284.7,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 105.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h3.1.b1": {
+    "s": 22531.3,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h2.1.b1": {
+    "s": 22593.9,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h1.1.b1": {
+    "s": 22639.0,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.v.c2.1.b1": {
+    "s": 22654.0,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 120.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h.c2.1.b1": {
+    "s": 22655.0,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcp.h.b1": {
+    "s": 33590.7,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 13.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcp.v.b1": {
+    "s": 33658.3,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 90.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcs.h1.b1": {
+    "s": 33725.9,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 14.0,
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcs.v1.b1": {
+    "s": 33793.4,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 105.0,
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcs.h2.b1": {
+    "s": 33922.1,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 14.0,
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcp.hp.b1": {
+    "s": 34276.6,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 20.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcs.hp1.b1": {
+    "s": 34501.6,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 28.0,
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcs.v2.b1": {
+    "s": 34569.5,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 105.0,
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcs.hp2.b1": {
+    "s": 34803.2,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 28.0,
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tct.h.2.b1": {
+    "s": 44726.7,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 14.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tct.v.2.b1": {
+    "s": 44949.3,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 105.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h3.2.b1": {
+    "s": 45196.0,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h2.2.b1": {
+    "s": 45258.6,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h1.2.b1": {
+    "s": 45303.6,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.v.c2.2.b1": {
+    "s": 45318.6,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 120.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h.c2.2.b1": {
+    "s": 45319.6,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tct.h.3.b1": {
+    "s": 67391.3,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 14.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tct.v.3.b1": {
+    "s": 67614.0,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 105.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h3.3.b1": {
+    "s": 67860.6,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h2.3.b1": {
+    "s": 67923.2,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h1.3.b1": {
+    "s": 67968.3,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.v.c2.3.b1": {
+    "s": 67983.3,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 120.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h.c2.3.b1": {
+    "s": 67984.3,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tct.h.4.b1": {
+    "s": 90056.0,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 14.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tct.v.4.b1": {
+    "s": 90278.6,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 105.0,
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h3.4.b1": {
+    "s": 90525.3,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h2.4.b1": {
+    "s": 90587.9,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h1.4.b1": {
+    "s": 90632.9,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.v.c2.4.b1": {
+    "s": 90647.9,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 120.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  },
+  "tcr.h.c2.4.b1": {
+    "s": 90648.9,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "inermet180",
+        "thickness": 10
+      }
+    ],
+    "n_sigma": 15.0,
+    "length": 0.1,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": []
+  }
+}
