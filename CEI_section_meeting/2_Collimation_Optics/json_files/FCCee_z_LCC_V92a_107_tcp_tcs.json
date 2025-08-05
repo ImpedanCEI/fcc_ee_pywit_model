@@ -1,0 +1,137 @@
+{
+  "tcp.h.b1": {
+    "s": 33590.7,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.00738648
+  },
+  "tcp.v.b1": {
+    "s": 33658.3,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.0024690500000000004
+  },
+  "tcs.h1.b1": {
+    "s": 33725.9,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.00803742
+  },
+  "tcs.v1.b1": {
+    "s": 33793.4,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.00336008
+  },
+  "tcs.h2.b1": {
+    "s": 33922.1,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.0076450500000000005
+  },
+  "tcp.hp.b1": {
+    "s": 34276.6,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.0132854
+  },
+  "tcs.hp1.b1": {
+    "s": 34501.6,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.00985973
+  },
+  "tcs.v2.b1": {
+    "s": 34569.5,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.0031218300000000004
+  },
+  "tcs.hp2.b1": {
+    "s": 34803.2,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "halfgap": 0.00760127
+  }
+}
