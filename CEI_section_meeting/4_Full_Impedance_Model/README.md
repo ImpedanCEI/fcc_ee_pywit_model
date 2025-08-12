@@ -1,6 +1,4 @@
-# <img src="logo/CEI-logo.png" alt="CEI Logo" width="50"/> FCC-ee Impedance Wake Model
-
-<img src="logo/fcc_png.png" alt="FCC-ee Logo" width="100"/>
+# <img src="logo/fcc_png.png" alt="FCC-ee Logo" width="100"/> FCC-ee Impedance Wake Model <img src="logo/CEI-logo.png" alt="CEI Logo" width="50"/> 
 
 *A repository containing all elements of the FCC-ee impedance wake model.*
 
@@ -37,18 +35,15 @@ cd fcc_ee_IW_model
 
 ```
 fcc_ee_IW_model/
-├─ elements/└─ coll_square/
-│     └─ taper_H15_V2.5/
-│        └─ imp/
-
+├─ elements/
+│  ├─ BPMs/
+│  ├─ RF_cavity/
+│  ├─ bellows/
+│  ├─ collimators/
+│  ├─ pipe/
+│  └─ tapers/
 ├─ script/
 ├─ images/
-│  └─ coll_square/
-│     └─ taper_H15_V2.5/
-│        └─ imp/
 ├─ output/
-│  └─ coll_square/
-│     └─ taper_H15_V2.5/
-│        └─ imp/
 └─ README.md
 ```
