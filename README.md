@@ -6,12 +6,14 @@ The intent of this package is to provide the infrastructure needed to develop an
 
 ---
 
-## 🌀 Overview
+## Overview
 
 This repository contains the necessary tools to develop the **FCC-ee Impedance/Wake Model** for the FCC-ee project.  
 
 ---
 ## 🚀 Getting Started
+
+Install **PyWIT / xwakes** to begin working with the model.
 
 ### 🛠️ PyWIT / xwakes 
 
