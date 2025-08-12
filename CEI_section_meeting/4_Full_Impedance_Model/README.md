@@ -1,4 +1,5 @@
-# ![FCC-ee Logo](images/fcc_png.png)  FCC-ee Impedance Wake Model
+# ![CEI Logo](logo/CEI-logo.png)FCC-ee Impedance Wake Model
+![FCC-ee Logo](logo/fcc_png.png)
 *A repository containing all elements of the FCC-ee impedance wake model.*
 
 ---
@@ -34,7 +35,10 @@ cd fcc_ee_IW_model
 
 ```
 fcc_ee_IW_model/
-├─ elements/
+├─ elements/└─ coll_square/
+│     └─ taper_H15_V2.5/
+│        └─ imp/
+
 ├─ script/
 ├─ images/
 │  └─ coll_square/
