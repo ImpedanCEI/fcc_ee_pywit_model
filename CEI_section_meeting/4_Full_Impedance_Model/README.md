@@ -4,7 +4,7 @@
 
 ---
 
-## <img src="logo/fcc_png.png" alt="FCC-ee Logo" width="100"/>  Overview
+## 🌀 Overview
 
 This repository contains the **Impedance Wake Model** for the FCC-ee project.  
 Here, you will find all the necessary elements, scripts, and data to work with the model.
