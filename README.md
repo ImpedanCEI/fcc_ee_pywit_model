@@ -11,14 +11,13 @@ The intent of this package is to provide the infrastructure needed to develop an
 This repository contains the necessary tools to develop the **FCC-ee Impedance/Wake Model** for the FCC-ee project.  
 
 ---
+## 🚀 Getting Started
 
-## 🛠️ PyWIT / xwakes 
+### 🛠️ PyWIT / xwakes 
 
 *Toolbox to build and manipulate impedance and wake function models, usable in **Xsuite**, **DELPHI**, and others.*
 
-## 🚀 Getting Started
-
-### 📦 Installation
+#### 📦 Installation
 
 Under a conda environment with Python 3.8+, install via **PyPI**: 
 
@@ -26,7 +25,7 @@ Under a conda environment with Python 3.8+, install via **PyPI**:
 pip install xwakes
 ```
 
-### 🔗 Coupling Xwakes to IW2D
+#### 🔗 Coupling Xwakes to IW2D
 Xwakes can be coupled to IW2D using the executables obtained from compiling the C++ code.
 Once the Python interface for IW2D is completed, this will no longer be necessary.
 
@@ -35,7 +34,7 @@ Some folders need to be created in the user’s home directory. This can be auto
 ```bash
 python -c 'import xwakes; xwakes.initialize_pywit_directory()'
 ```
-### ⚙️ Building IW2D Executables
+#### ⚙️ Building IW2D Executables
 
 Follow the IW2D README.md (https://gitlab.cern.ch/IRIS/IW2D/) to produce the executables:
 - **flatchamber.x** 
