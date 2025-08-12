@@ -1,6 +1,4 @@
-# 🌀 FCC-ee Impedance Wake Model
-
-![FCC-ee Logo](images/fcc_png.png)  
+# ![FCC-ee Logo](images/fcc_png.png)  FCC-ee Impedance Wake Model
 *A repository containing all elements of the FCC-ee impedance wake model.*
 
 ---
