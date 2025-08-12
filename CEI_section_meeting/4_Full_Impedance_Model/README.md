@@ -29,9 +29,17 @@ cd fcc_ee_IW_model
 
 ## 📁 Contents
 
-- **Elements** – All impedance wake model elements are collected here.
+
+- **Elements** – All impedance wake model elements are collected here:
+  - **BPMs** – 10,000 evaluated with CST.
+  - **RF cavities** – 132 single-cell 400 MHz RF cavities.
+  - **Bellows** – Bellows section models.
+  - **Collimators** – 41 collimators; Geometrical (CST) and RW (IW2D) contributions considered.
+  - **Beam pipe** – Circular copper cross-section (radius 30 mm) coated with a 150 nm NEG layer; evaluated with IW2D + numerical form factor for both driving and detuning impedance/wake, considering the realistic vacuum chamber shape.
+  - **Tapers** – 33 taper elements.
 - **Scripts** – Utilities for running and analyzing simulations.
-- **Data** – Input and output files for your workflow.
+- **Images** – Contribution plots.
+- **Output** – Output files for your workflow.
 
 ```
 fcc_ee_IW_model/
@@ -47,3 +55,5 @@ fcc_ee_IW_model/
 ├─ output/
 └─ README.md
 ```
+
+# <img src="logo/fcc.png"  alt="CEI Logo" width="250"/> 
