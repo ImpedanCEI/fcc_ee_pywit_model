@@ -1,6 +1,7 @@
-# <img src="logo/fcc_png.png" alt="FCC-ee Logo" width="100"/> FCC-ee Impedance Wake Model <img src="logo/cei_logo.png" alt="CEI Logo" width="50"/> 
+# <img src="logo/cei_logo.png" alt="CEI Logo" width="80"/>  FCC-ee Impedance Wake Model 
 
 *A repository containing all elements of the FCC-ee impedance wake model.*
+# <img src="logo/fcc_png.png" alt="FCC-ee Logo" width="100"/> 
 
 ---
 
