@@ -1,12 +1,12 @@
-# <img src="logo/cei_logo.png" alt="CEI Logo" width="60"/>  FCC-ee Impedance Wake Model 
+# <img src="logo/cei_logo.png" alt="CEI Logo" width="50"/>  FCC-ee Impedance Wake Model 
 
 *A repository containing all elements of the FCC-ee impedance wake model.*
 
 ---
 
-## 📂 Overview
+## <img src="logo/fcc_png.png" alt="FCC-ee Logo" width="100"/>  Overview
 
-<img src="logo/fcc_png.png" alt="FCC-ee Logo" width="300"/>  This repository contains the **Impedance Wake Model** for the FCC-ee project.  
+This repository contains the **Impedance Wake Model** for the FCC-ee project.  
 Here, you will find all the necessary elements, scripts, and data to work with the model.
 
 ---
