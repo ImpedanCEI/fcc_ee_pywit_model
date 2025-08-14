@@ -19,9 +19,9 @@ def compute_betas_and_lengths(twiss_table,
         beta_smooth_elements = []
     else:
         if beta_x_smooth is None or beta_y_smooth is None:
-            raise ValueError("if beta_smooth_elements is specified the smooth beta has to be specified too")
+            raise ValueError("if beta_smooth_elements is specified the smooth beta has to be specified too") 
 
-    all_s = twiss_table.s
+    all_s = twiss_table.s 
     _, ind = np.unique(all_s, return_index=True)
     all_s = all_s[ind]
     all_betax = twiss_table.betx[ind]
@@ -30,6 +30,7 @@ def compute_betas_and_lengths(twiss_table,
     fx = interp1d(all_s, all_betax, kind='cubic')
     fy = interp1d(all_s, all_betay, kind='cubic')
 
+    print (all_betax)
     dict_betas_lengths = {}
 
     for name in layout_dict['betas_lengths_names']:
