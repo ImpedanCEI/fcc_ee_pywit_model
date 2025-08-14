@@ -30,7 +30,6 @@ def compute_betas_and_lengths(twiss_table,
     fx = interp1d(all_s, all_betax, kind='cubic')
     fy = interp1d(all_s, all_betay, kind='cubic')
 
-    print (all_betax)
     dict_betas_lengths = {}
 
     for name in layout_dict['betas_lengths_names']:
