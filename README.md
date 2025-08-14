@@ -19,7 +19,7 @@ Install **PyWIT / xwakes** to begin working with the model.
 
 *Toolbox to build and manipulate impedance and wake function models, usable in **Xsuite**, **DELPHI**, and others.*
 
-#### 📦 Installation check
+#### 📦 Installation
 
 Under a conda environment with Python 3.8+, install via **PyPI**: 
 
