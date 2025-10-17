@@ -1,0 +1,7 @@
+{
+  "broadband_resonators_1": {
+    "Rt": 880.0,
+    "Rl": 100.0,
+    "length": 0.3
+  }
+}

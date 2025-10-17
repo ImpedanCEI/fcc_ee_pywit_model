@@ -1,0 +1,11 @@
+{
+  "tcl":
+    [
+      {
+        "length": 0.097,
+        "delta_halfgap": 0.0176,
+        "width": 0.035,
+        "layers": [{"material": "Cu", "thickness": Infinity}]
+      }
+    ]
+}
