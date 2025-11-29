@@ -1,0 +1,28 @@
+{
+  "name": "cavity_1",
+  "length": 8.6,
+  "modes": [
+    {
+      "Rl": 1e6,
+      "Ql": 1e3,
+      "fl": 400e6,
+      "Rxd": 1e6,
+      "Qxd": 1e3,
+      "fxd": 400e6,
+      "Ryd": 1e6,
+      "Qyd": 1e3,
+      "fyd": 400e6
+    },
+    {
+      "Rl": 2e6,
+      "Ql": 1e3,
+      "fl": 400e6,
+      "Rxd": 2e6,
+      "Qxd": 1e3,
+      "fxd": 400e6,
+      "Ryd": 2e6,
+      "Qyd": 1e3,
+      "fyd": 400e6
+    }
+  ]
+}
