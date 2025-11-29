@@ -1,0 +1,137 @@
+{
+  "tcp.h.b1": {
+    "s": 33103.5,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 10.997883541418858
+  },
+  "tcp.v.b1": {
+    "s": 33103.0,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 66.51308591850623
+  },
+  "tcs.h1.b1": {
+    "s": 33281.61,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 13.004338407616073
+  },
+  "tcs.v1.b1": {
+    "s": 33446.36,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 75.48448306297783
+  },
+  "tcs.h2.b1": {
+    "s": 33419.35,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 12.993484525688476
+  },
+  "tcs.v2.b1": {
+    "s": 33686.61,
+    "angle": 1.57079633,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 76.30987416215257
+  },
+  "tcp.hp.b1": {
+    "s": 34530.0,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "moc",
+        "thickness": 10
+      }
+    ],
+    "length": 0.25,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 18.50673844418472
+  },
+  "tcs.hp1.b1": {
+    "s": 34585.1,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 21.510294924270926
+  },
+  "tcs.hp2.b1": {
+    "s": 34812.96,
+    "angle": 0.0,
+    "layers": [
+      {
+        "material": "Mo",
+        "thickness": 10
+      }
+    ],
+    "length": 0.3,
+    "tilt_1": 0.0,
+    "tilt_2": 0.0,
+    "halfgap_dependent_hom_files": [],
+    "n_sigma": 21.497294867809313
+  }
+}
