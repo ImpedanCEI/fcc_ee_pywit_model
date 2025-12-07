@@ -1,0 +1,25 @@
+{
+  "pipe_section_1": {
+    "small_axis": 0.03,
+    "large_axis": 0.03,
+    "orientation": "v",
+    "layers": [
+      {
+        "material": "fcc_pipe_layer_1_neg",
+        "thickness": 0.00000015
+      },
+      {
+        "material": "fcc_pipe_layer_2_cu",
+        "thickness": 0.002
+      },
+      {
+        "material": "fcc_pipe_layer_3",
+        "thickness": 0.006
+      },
+      {
+        "material": "fcc_pipe_layer_4",
+        "thickness": "inf"
+      }
+    ]
+  }
+}
